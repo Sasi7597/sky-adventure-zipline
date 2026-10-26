@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 250" role="img" aria-labelledby="title desc">
+  <title id="title">Sky Adventure's</title>
+  <desc id="desc">Zipline rider and mountain emblem for Sky Adventure's.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d7041"/><stop offset="1" stop-color="#123721"/></linearGradient></defs>
+  <g transform="translate(18 8)">
+    <circle cx="77" cy="76" r="70" fill="url(#bg)" stroke="#1e5b34" stroke-width="7"/><circle cx="77" cy="76" r="62" fill="none" stroke="#c18a66" stroke-width="3"/>
+    <path d="M16 49 L139 43" stroke="#82c8ec" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="70" cy="55" r="6" fill="#82c8ec"/>
+    <path d="M70 61 L59 76 L76 86 L85 70 M60 75 L48 91 M76 86 L92 99" stroke="#82c8ec" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M30 124 L66 86 L88 108 L110 78 L140 124Z" fill="#fff"/><path d="M61 124 L87 95 L99 107 L116 89 L136 124Z" fill="#9da0a2"/>
+    <path d="M91 28c8-8 23-8 31 1 3-9 12-13 20-8 9 5 10 17 3 24H90c-6-5-5-12 1-17z" fill="#fff"/>
+  </g>
+  <text x="95" y="190" text-anchor="middle" fill="#0f4226" font-family="Arial,Helvetica,sans-serif" font-size="43" font-weight="900">SKY</text>
+  <text x="95" y="228" text-anchor="middle" fill="#0f4226" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700">Adventure's</text>
+</svg>
