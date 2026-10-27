@@ -529,3 +529,38 @@ body{font-size:14px}
   .booking-form{padding:15px}
   .carousel-toggle{right:14px;bottom:20px;height:32px;min-width:62px;font-size:9px}
 }
+
+/* Hero readability correction */
+.hero-carousel{height:min(560px,76svh);min-height:500px}
+.slide-content{padding-top:34px}
+.slide-content>*{max-width:560px}
+.slide h1,.slide h2{font-size:clamp(36px,4.15vw,56px);line-height:.9;letter-spacing:-.5px}
+.slide p{max-width:500px;margin-top:12px;font-size:13px;line-height:1.5}
+.kicker{font-size:8px;padding:5px 9px;margin-bottom:10px}
+.hero-actions{margin-top:16px}
+.btn{min-height:38px;padding:0 14px;font-size:9px}
+.carousel-arrow{width:36px;height:36px;font-size:22px}
+.carousel-dots{bottom:24px}
+.carousel-toggle{bottom:18px}
+.quick-facts{margin-top:-22px}
+.section{padding:48px 6%}
+.story-image{height:310px}
+.story h2,.section-head h2,.location-card h2,.booking-copy h2{font-size:clamp(30px,3.2vw,43px)}
+.section-head{margin-bottom:28px}
+.journey-grid h3{font-size:18px}
+.gallery-grid{grid-auto-rows:145px}
+.map-visual{min-height:260px}
+.booking-section{padding:46px 6%}
+@media(max-width:820px){
+  .hero-carousel{height:560px;min-height:560px}
+  .slide h1,.slide h2{font-size:46px}
+  .slide-content{padding-top:62px}
+}
+@media(max-width:540px){
+  .hero-carousel{height:570px;min-height:570px}
+  .slide h1,.slide h2{font-size:36px}
+  .slide p{font-size:12px}
+  .carousel-arrow{bottom:62px}
+  .carousel-dots{bottom:42px}
+  .carousel-toggle{bottom:14px}
+}
