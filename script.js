@@ -1,9 +1,12 @@
 const header = document.getElementById('header');
 const menuToggle = document.getElementById('menuToggle');
 const mobileNav = document.getElementById('mobileNav');
-const toTop = document.getElementById('toTop');
+const whatsappFloat = document.querySelector('.whatsapp-float');
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
+const bookingDate = document.getElementById('bookingDate');
+const faqToggle = document.getElementById('faqToggle');
+const faqList = document.getElementById('faqList');
 const slides = [...document.querySelectorAll('.slide')];
 const dotsWrap = document.getElementById('carouselDots');
 const prev = document.getElementById('prevSlide');
@@ -18,10 +21,25 @@ const delay = 5000;
 
 function onScroll(){
   header.classList.toggle('scrolled', window.scrollY > 28);
-  toTop.classList.toggle('show', window.scrollY > 520);
 }
 window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
+setTimeout(() => whatsappFloat.classList.add('is-collapsed'), 5000);
+
+function formatLocalDate(date){
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+bookingDate.min = formatLocalDate(new Date());
+
+faqToggle.addEventListener('click', () => {
+  const isExpanded = faqToggle.getAttribute('aria-expanded') === 'true';
+  faqToggle.setAttribute('aria-expanded', String(!isExpanded));
+  faqToggle.textContent = isExpanded ? 'Show FAQs' : 'Hide FAQs';
+  faqList.hidden = isExpanded;
+});
 
 menuToggle.addEventListener('click', () => {
   const open = mobileNav.classList.toggle('open');
@@ -31,8 +49,6 @@ document.querySelectorAll('.mobile-nav a').forEach(a => a.addEventListener('clic
   mobileNav.classList.remove('open');
   menuToggle.setAttribute('aria-expanded', 'false');
 }));
-
-toTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
 slides.forEach((_, i) => {
   const dot = document.createElement('button');
@@ -100,7 +116,11 @@ carousel.addEventListener('touchend', e => {
 
 contactForm.addEventListener('submit', e => {
   e.preventDefault();
-  formNote.textContent = 'Thanks! The booking form is frontend-only for now. Backend/API integration can be connected later.';
+  const booking = new FormData(contactForm);
+  const bookingDay = new Date(`${booking.get('date')}T00:00:00`);
+  const dateLabel = bookingDay.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
+  const guests = Number(booking.get('people'));
+  formNote.textContent = `Thanks, ${booking.get('name')}! Your enquiry is for ${booking.get('activity')} on ${dateLabel} for ${guests} ${guests === 1 ? 'person' : 'people'}. This demo form does not send or save bookings yet. Please contact us on WhatsApp to confirm.`;
 });
 
 const observer = new IntersectionObserver(entries => {
