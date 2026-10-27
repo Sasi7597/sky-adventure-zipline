@@ -10,7 +10,9 @@ const prev = document.getElementById('prevSlide');
 const next = document.getElementById('nextSlide');
 const progress = document.getElementById('carouselProgress');
 const carousel = document.querySelector('.hero-carousel');
+const carouselToggle = document.getElementById('carouselToggle');
 let active = 0;
+let userPaused = false;
 let timer;
 const delay = 5000;
 
@@ -42,7 +44,7 @@ slides.forEach((_, i) => {
 const dots = [...dotsWrap.querySelectorAll('button')];
 
 function restartProgress(){
-  progress.classList.remove('run');
+  progress.classList.remove('run', 'paused');
   void progress.offsetWidth;
   progress.classList.add('run');
 }
@@ -57,6 +59,10 @@ function goTo(index, restart = false){
 }
 function startAuto(){
   clearInterval(timer);
+  if(userPaused){
+    progress.classList.add('paused');
+    return;
+  }
   restartProgress();
   timer = setInterval(() => goTo(active + 1), delay);
 }
@@ -64,13 +70,25 @@ function pauseAuto(){
   clearInterval(timer);
   progress.classList.add('paused');
 }
+function updateCarouselToggle(){
+  carouselToggle.textContent = userPaused ? 'Play' : 'Pause';
+  carouselToggle.setAttribute('aria-label', userPaused ? 'Play carousel' : 'Pause carousel');
+  carouselToggle.setAttribute('aria-pressed', String(userPaused));
+}
 prev.addEventListener('click', () => goTo(active - 1, true));
 next.addEventListener('click', () => goTo(active + 1, true));
+carouselToggle.addEventListener('click', () => {
+  userPaused = !userPaused;
+  if(userPaused) pauseAuto();
+  else startAuto();
+  updateCarouselToggle();
+});
 carousel.addEventListener('mouseenter', pauseAuto);
 carousel.addEventListener('mouseleave', startAuto);
 carousel.addEventListener('focusin', pauseAuto);
 carousel.addEventListener('focusout', startAuto);
 dots[0].classList.add('active');
+updateCarouselToggle();
 startAuto();
 
 let touchStartX = 0;
