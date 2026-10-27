@@ -107,3 +107,19 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
 }, {threshold:.14});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+// Activities category filters
+const activityFilters = [...document.querySelectorAll('.activity-filter')];
+const activityCards = [...document.querySelectorAll('.activity-card')];
+
+activityFilters.forEach(button => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    activityFilters.forEach(item => item.classList.toggle('active', item === button));
+    activityCards.forEach(card => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('is-hidden', !show);
+    });
+  });
+});

@@ -564,3 +564,40 @@ body{font-size:14px}
   .carousel-dots{bottom:42px}
   .carousel-toggle{bottom:14px}
 }
+
+/* Activities section */
+.activities-section{background:#f5f4ee}
+.activities-section .section-head{max-width:760px}
+.activity-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:-8px 0 26px}
+.activity-filter{border:1px solid #d6ddd6;border-radius:999px;background:#fff;color:var(--green);padding:7px 12px;font-size:9px;font-weight:800;cursor:pointer;transition:.2s}
+.activity-filter:hover{border-color:#9fba8f}
+.activity-filter.active{background:var(--green);border-color:var(--green);color:#fff}
+.activities-grid{max-width:1060px;margin:auto;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.activity-card{overflow:hidden;border:1px solid #e2e5df;border-radius:12px;background:#fff;box-shadow:0 7px 18px rgba(8,30,18,.05);transition:transform .22s,box-shadow .22s,opacity .2s}
+.activity-card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(8,30,18,.10)}
+.activity-card.is-hidden{display:none}
+.activity-visual{height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(145deg,#dcebd2,#bdd4ab)}
+.activity-icon{font-size:27px;line-height:1}
+.activity-visual small{margin-top:7px;color:#667963;font-size:6px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.activity-card-body{padding:12px 12px 13px}
+.activity-category{display:block;color:var(--orange);font-size:6px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.activity-card h3{font-size:12px;line-height:1.25;margin-bottom:6px;color:#173223}
+.activity-card p{min-height:42px;color:#68736b;font-size:8px;line-height:1.45}
+.activity-card a{display:inline-block;margin-top:10px;color:#0c2c1d;font-size:7px;font-weight:900;text-transform:uppercase}
+.activities-cta{text-align:center;margin-top:24px}
+@media(max-width:1000px){
+  .activities-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:760px}
+}
+@media(max-width:700px){
+  .activities-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .activity-visual{height:115px}
+  .activity-card h3{font-size:13px}
+  .activity-card p{font-size:9px}
+}
+@media(max-width:460px){
+  .activities-grid{grid-template-columns:1fr}
+  .activity-card{display:grid;grid-template-columns:115px 1fr}
+  .activity-card.is-hidden{display:none}
+  .activity-visual{height:100%;min-height:130px}
+  .activity-card p{min-height:0}
+}
