@@ -828,7 +828,7 @@ body{font-size:14px}
 }
 
 main>section:not(.hero-carousel){position:relative}
-main>section:not(.hero-carousel)::before{
+main>section:not(.hero-carousel):not(.quick-facts)::before{
   position:absolute;
   z-index:4;
   top:0;
@@ -839,4 +839,120 @@ main>section:not(.hero-carousel)::before{
   background:url("assets/zipline-divider.svg") center/100% 100% no-repeat;
   content:"";
   pointer-events:none;
+}
+
+@media (min-width: 380px) and (max-width: 540px) {
+  .quick-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fact,
+  .fact:nth-child(2) {
+    border-bottom: 0;
+    padding: 8px;
+  }
+
+  .fact:nth-child(odd) {
+    border-right: 1px solid var(--border);
+  }
+
+  .fact:nth-child(even) {
+    border-right: 0;
+  }
+
+  .fact:nth-child(n + 3) {
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+}
+
+@media (max-width: 379px) {
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-card {
+    display: grid;
+    grid-template-columns: minmax(88px, 35%) minmax(0, 1fr);
+  }
+
+  .activity-card.is-hidden {
+    display: none;
+  }
+
+  .activity-visual {
+    height: 100%;
+    min-height: 116px;
+  }
+
+  .activity-card-body {
+    min-width: 0;
+  }
+
+  .activity-card p {
+    min-height: 0;
+  }
+}
+
+@media (max-height: 500px) and (min-width: 541px) {
+  .hero-carousel {
+    height: min(100svh, 460px);
+    min-height: 360px;
+  }
+
+  .hero-carousel .slide-content {
+    padding-top: clamp(112px, 26vh, 132px);
+  }
+
+  .slide h1,
+  .slide h2 {
+    font-size: clamp(30px, 5vw, 46px);
+  }
+}
+
+@media (max-height: 500px) and (max-width: 540px) {
+  .hero-carousel {
+    height: 400px;
+    min-height: 400px;
+  }
+
+  .hero-carousel .slide-content {
+    padding-top: clamp(92px, 24vh, 115px);
+  }
+}
+
+@media (max-height: 800px) and (min-width: 821px) {
+  .hero-carousel .slide-content {
+    padding-top: clamp(108px, 15vh, 128px);
+  }
+
+  .slide h1,
+  .slide h2 {
+    font-size: clamp(36px, 3.8vw, 48px);
+  }
+}
+
+@media (max-height: 360px) and (min-width: 541px) {
+  .slide h1,
+  .slide h2 {
+    font-size: clamp(28px, 4vw, 36px);
+  }
+
+  .slide p {
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .kicker {
+    margin-bottom: 7px;
+  }
+
+  .hero-actions {
+    margin-top: 10px;
+  }
+
+  .btn {
+    min-height: 34px;
+  }
 }
